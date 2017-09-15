@@ -1,15 +1,21 @@
 # Challenge1
 
+The purpose of this project is to provide a REST server that can communicate with separate mobile applications that use geofencing to determine if a user is in a specific area.
+Like many of STG's dev center projects, this project has had bumps where the original creators moved on to other projects.
+
+It is currently designed so that an angular2 front end _could_ be used. However, there is no current desktop front end built for it.
+
+The project works only with user names, email addresses and lets you know if they are "in the office".
+
+There exists a single table in MariaDB with 'contact' information.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.1.
 
 ## Development server
 
-If you use `ng build` and run from eclipse, you won't be able to see changes in real time. Instead, use ng serve while developing.
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To develop the front end, us `ng serve` and run the app from angular. On a development environment, this will likely be localhost:4200
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+If you simply want to run the REST server and test with cURL from a CLI, run the project in eclipse or some other IDE, and test against localhost:8080
 
 ## Build
 
@@ -27,5 +33,42 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 Before running the tests make sure you are serving the app via `ng serve`.
 
 ## Further help
+*Guide to using the REST server*
+Create - POST
+Read - GET
+Update - PATCH
+Delete - DELETE
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+*Add a Contact*
+
+  curl  -X POST -H 'content-type: application/json' -d '{"email" : "some.user@StgConsulting.com", "firstName" : "Nelson", "lastName": "Boyer", "inOffice" : "false" }' http://localhost:8080/contacts
+
+*Get all contacts:*
+curl http://localhost:8080/contacts
+This will give you a list of all contacts and provide a link that you can use to run all other commands against
+{
+    "_embedded" : {
+          "contacts" : [ {
+                  "email" : "RP@stgconsulting.com",
+                        "firstName" : "Ryan",
+                              "lastName" : "Pritt",
+                                    "inOffice" : false,
+                                          "_links" : {
+                                                    "self" : {
+                                                                "href" : "http://localhost:8080/contacts/2"
+                                                                          },
+                                                            "contact" : {
+                                                                        "href" : "http://localhost:8080/contacts/2"
+                                                                                  }
+                                                          }
+                      } ]
+            },
+
+*Update a Contact:*
+      curl -X PATCH -H 'content-type: application/json' -d '{"inOffice" : "true" }' http://localhost:8080/contacts/2
+
+*Delete a Contact*
+
+      curl -X DELETE http://localhost:8080/contacts/2
+
+
