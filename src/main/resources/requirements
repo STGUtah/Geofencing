@@ -1,0 +1,88 @@
+The Challenge
+
+You are to build an application that uses core technologies that are part of STG’s Java Practice technology stack.  The challenge is to produce a working app, or as much as possible, in the time given.
+
+Functional Requirements
+
+Develop a single-page web application, backed by a ReST API, that allows the sending and display of messages to and from a user.  The interface should support the following features:
+
+    Add a new user
+    Send a message to an existing user
+    List messages sent to a user
+    List all messages sent through the system, in some kind of paged fashion
+
+Development Requirements
+
+    Include Unit Tests
+    Include Integration Tests
+    Commit the code to some SCM system that can be accessed by a reviewer.
+    Include documentation on how to setup and run the project
+
+Technology Requirements
+
+You MUST use a subset of the following technologies.  Where more than one related technology is acceptable, you can choose one of the given options.  
+
+Remember, this is a challenge to use the core technology stack.  You may be familiar with other technologies that do the same thing, but don’t use them.  Mention it to the practice leadership and it may be added to the list of core technologies.
+
+    Build
+
+    Maven
+    Gradle
+
+    Spring
+
+    Core
+    MVC
+    Boot
+    Data JPA
+    Data ReST (optional)
+
+    JPA
+
+    Hibernate
+    EclipseLink
+    Any other JPA provider
+
+    Front End
+
+    Angular 2/4
+    ReactJS
+    jQuery
+
+    Database
+
+    MySQL
+    PostgeSQL
+    MariaDB
+    MS SQLServer
+
+    Database Migration
+
+    Liquibase
+    Flyway
+
+    Testing
+
+    JUnit (required)
+    Mock Frameworks
+
+    Mockito
+    jMockit
+
+    Hamcrest Matchers
+    Spring Test
+    DBUnit (optional, but some kind of integration tests should include the data store)
+
+Bonus
+
+Use some or all of the following technologies:
+
+Docker
+
+Websockets
+
+NoSQL store (only after using an RDBMS)
+
+Spring Cloud
+
+Achieve 80% code coverage
